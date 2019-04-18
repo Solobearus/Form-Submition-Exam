@@ -5,10 +5,25 @@ import ReduxStore from './Redux/store'
 import './index.css';
 import App from './Components/App/App.jsx';
 import * as serviceWorker from './serviceWorker';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+//Edit Material-ui Theme here :
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#613C24',
+        },
+    },
+    typography: {
+        useNextVariants: true,
+    },
+});
 
 ReactDOM.render(
     <Provider store={ReduxStore}>
-        <App />
+        <MuiThemeProvider theme={theme}>
+            <App />
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById("root")
 );
