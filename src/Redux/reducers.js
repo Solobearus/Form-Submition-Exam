@@ -1,6 +1,6 @@
 
 import * as actions from './actions'
-import ex_date from './ex_date'
+import ex_data from './ex_data'
 
 const initialState = {
     device_groups: null,
@@ -10,31 +10,35 @@ const initialState = {
 
 function firstReducer(state = initialState, action) {
 
-    switch (action.type) {
+    let newChange = null;
+    let checked = null;
+    // console.log('initialState: ', initialState);
 
-        case action.GET_INITIALIZESTATE: // will be called after UI mounted
-            const initialState = { ...ex_date };
+    switch (action.type) {
+        case actions.GET_INITIALIZESTATE: // will be called after UI mounted
+            const newState = { ...ex_data };
+
             // In order to know if we should check the device group's checkbox
             // For every device group
-            for (let i = 0; i < initialState.device_groups.length; i++) {
+            for (let i = 0; i < newState.device_groups.length; i++) {
                 // We add a counter for the device_group
-                initialState.device_groups[i].checkedCounter = 0;
+                newState.device_groups[i].checkedCounter = 0;
                 // For every device
-                for (let j = 0; j < initialState.device_groups[i].devices.length; j++) {
+                for (let j = 0; j < newState.device_groups[i].devices.length; j++) {
                     // If device is active
-                    if (initialState.device_groups[i].devices[j].active === 1) {
+                    if (newState.device_groups[i].devices[j].active === 1) {
                         // We count the checked devices for that device group
-                        initialState.device_groups[i].checkedCounter++;
+                        newState.device_groups[i].checkedCounter++;
                     }
                 }
             }
-            return { ...state, ...initialState };
+            return { ...state, ...newState };
 
-        case action.CHANGE_GROUP_CHECKBOX:
+        case actions.CHANGE_GROUP_CHECKBOX:
             // change is made to device_groups
-            const newChange = state.device_groups;
+            newChange = state.device_groups;
             // if checkedCounter of the group was equal to groups length than the group's checkbox was checked 
-            const checked = newChange[action.id].checkedCounter === newChange[action.id].legnth;
+            checked = newChange[action.id].checkedCounter === newChange[action.id].legnth;
             // if it was checked : reset the counter to uncheck it , otherwise equal it to length to check it
             newChange[action.id].checkedCounter = checked ? 0 : newChange[action.id].length;
             // than go through every device and if group's checkbox was checked now uncheck all device's, 
@@ -48,10 +52,10 @@ function firstReducer(state = initialState, action) {
 
         case actions.CHANGE_DEVICE_CHECKBOX:
             // change is made to device_groups
-            const newChange = state.device_groups;
+            newChange = state.device_groups;
 
             // toggle device checkbox and update checkedCounter of group to handle groups checkbox.
-            const checked = newChange[action.payload.groupId].devices[action.payload.id].active === 1;
+            checked = newChange[action.payload.groupId].devices[action.payload.id].active === 1;
             if (checked) {
                 newChange[action.payload.groupId].checkedCounter--;
             } else {
@@ -62,22 +66,22 @@ function firstReducer(state = initialState, action) {
 
 
         case actions.GET_DEVICE_GROUPS:
-            const newChange = state.change;
+            newChange = state.change;
             console.log(`Reducer: some change was made to state.change`);
             return { ...state, change: newChange };
 
         case actions.GET_DEVICES:
-            const newChange = state.change;
+            newChange = state.change;
             console.log(`Reducer: some change was made to state.change`);
             return { ...state, change: newChange };
 
         case actions.GET_PROTOCOLS:
-            const newChange = state.change;
+            newChange = state.change;
             console.log(`Reducer: some change was made to state.change`);
             return { ...state, change: newChange };
 
         case actions.GET_TIMES:
-            const newChange = state.change;
+            newChange = state.change;
             console.log(`Reducer: some change was made to state.change`);
             return { ...state, change: newChange };
 

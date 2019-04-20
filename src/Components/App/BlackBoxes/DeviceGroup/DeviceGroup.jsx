@@ -3,6 +3,9 @@ import style from './DeviceGroup.module.css'
 import ButtonUI from '@material-ui/core/Button';
 import CheckboxUI from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Device from './Device/Device.jsx'
+import { connect } from 'react-redux'
+import { changeGroupCheckBox } from '../../../../Redux/actions'
 
 class DeviceGroup extends React.Component {
 
@@ -20,18 +23,18 @@ class DeviceGroup extends React.Component {
 
         if (this.state.showList) {
             devicesList = (this.props.devices || []).map(
-                (device) => <Device {...device, groupId = this.props.devices.id} />
+                (device) => <Device {...device} groupId={this.props.devices.id} />
             )
         }
 
         return (
-            <div className={style.DeviceGroup}>
+            <div className={style.DeviceGroup} >
                 <ButtonUI onClick={this.setState({ showList: !this.state.showList })}></ButtonUI>
 
                 {/* group 1 */}
                 <FormControlLabel
                     control={
-                        <CheckboxUI
+                        < CheckboxUI
                             checked={this.state.checked}
                             onChange={this.props.changeGroupCheckBox(this.props.group.id)}
                             value={this.props.id}
@@ -42,7 +45,7 @@ class DeviceGroup extends React.Component {
                 />
 
                 {devicesList}
-            </div>
+            </div >
         )
     }
 }

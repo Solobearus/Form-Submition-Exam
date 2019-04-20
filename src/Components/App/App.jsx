@@ -5,6 +5,7 @@ import BlackBoxes from './BlackBoxes/BlackBoxes.jsx'
 import Protocols from './Protocols/Protocols.jsx'
 import Times from './Times/Times.jsx'
 import Summery from './Summery/Summery.jsx'
+import { InitializeState } from '../../Redux/actions'
 
 class App extends React.Component {
 
@@ -17,10 +18,12 @@ class App extends React.Component {
     }
 
     render() {
+        // console.log('[App] > render');
+
         return (
             <div className={style.App}>
                 <form onSubmit={this.handleSubmit}>
-                    <BlackBoxes device_groups={this.props.device_groups}></BlackBoxes>
+                    <BlackBoxes device_groups={this.props.device_groups} />
                     {/* <Protocols protocos={this.props.protocols}></Protocols> */}
                     {/* <Times times={this.props.times}></Times> */}
                     {/* <Summery></Summery> */}
@@ -33,7 +36,7 @@ class App extends React.Component {
 const mapStateToProps = state => ({
     device_groups: state.device_groups,
     protocols: state.protocols,
-    times: state.times    
+    times: state.times
 });
 
 const mapDispatchToProps = (dispatch) => {

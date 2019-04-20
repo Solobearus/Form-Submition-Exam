@@ -3,11 +3,12 @@ import style from './BlackBoxes.module.css'
 import DeviceGroup from './DeviceGroup/DeviceGroup.jsx'
 
 const BlackBoxes = (props) => {
-
+    // console.log('[BlackBoxes] render');
+    // console.log('props', props);
 
     return (
         <div className={style.BlackBoxes}>
-            {(this.props.device_groups || []).map(
+            {(props.device_groups || []).map(
                 (group) => <DeviceGroup {...group} />
             )}
         </div>
