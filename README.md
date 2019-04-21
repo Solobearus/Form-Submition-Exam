@@ -1,4 +1,4 @@
-## Cyberbit home exam
+## Home exam
 
 ### Technologies envolved :
 
@@ -9,6 +9,3 @@
 - npm i --save-dev redux-logger
 - npm i --save-dev redux-devtools-extension
 - npm i @material-ui/core
-
-### Components
-
