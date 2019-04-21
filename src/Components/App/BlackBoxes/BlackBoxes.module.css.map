@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,WAAY;EACR,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,kBAAkB,EAAE,SAAU;EAC9B,yBAAa;IACT,UAAU,EAAE,MAAM",
+"sources": ["BlackBoxes.module.scss"],
 "names": [],
 "file": "BlackBoxes.module.css"
 }

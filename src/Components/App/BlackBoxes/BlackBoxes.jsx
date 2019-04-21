@@ -7,9 +7,11 @@ const BlackBoxes = (props) => {
     return (
         <div className={style.BlackBoxes}>
             <h2>Black Boxes</h2>
-            {(props.device_groups || []).map(
-                (group) => <DeviceGroup {...group} key = {group.id}/>
-            )}
+            <div className={style.DeviceGroups}>
+                {(props.device_groups || []).map(
+                    (group) => <DeviceGroup {...group} key={group.id} />
+                )}
+            </div>
         </div>
     )
 }

@@ -1,3 +1,8 @@
-
+.BlackBoxes {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 0.1fr 1fr; }
+  .BlackBoxes .DeviceGroups {
+    overflow-y: scroll; }
 
 /*# sourceMappingURL=BlackBoxes.module.css.map */

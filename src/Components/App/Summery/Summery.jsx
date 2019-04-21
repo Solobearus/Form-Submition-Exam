@@ -62,19 +62,23 @@ class Summery extends React.Component {
         return (
             <div className={style.Summery}>
                 <h2>Summary</h2>
-                <SummeryBlock title='1'>{(this.props.device_groups || []).map((group) => {
-                    return <div key={group.id}>
-                        {(group.devices || []).map((device) => device.active ? <p key={device.id}>{device.name}</p> : null)}
-                        <br />
-                    </div>
-                })}</SummeryBlock>
-                <SummeryBlock title='2'>
-                    {(this.props.protocols || []).map((protocol) => protocol.active ? <p>{protocol.name}</p> : null)}
-                </SummeryBlock>
-                <SummeryBlock title='3'>{this.props.timesActive}</SummeryBlock>
-                <Button color="primary" onClick={() => { this.props.resetState(); }}>Clear</Button>
-                <Button variant="contained" color="primary" onClick={() => { this.submit(); }}>Start Learning</Button>
+                <div className={style.SummeryBlocks}>
+                    <SummeryBlock title='1'>{(this.props.device_groups || []).map((group) => {
+                        return <div key={group.id}>
+                            {(group.devices || []).map((device) => device.active ? <p key={device.id}>{device.name}</p> : null)}
+                            <br />
+                        </div>
+                    })}</SummeryBlock>
+                    <SummeryBlock title='2'>
+                        {(this.props.protocols || []).map((protocol) => protocol.active ? <p>{protocol.name}</p> : null)}
+                    </SummeryBlock>
+                    <SummeryBlock title='3'>{this.props.timesActive}</SummeryBlock>
 
+                </div>
+                <div>
+                    <Button color="primary" onClick={() => { this.props.resetState(); }}>Clear</Button>
+                    <Button variant="contained" color="primary" onClick={() => { this.submit(); }}>Start Learning</Button>
+                </div>
 
             </div>
         )

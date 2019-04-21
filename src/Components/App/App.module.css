@@ -1,5 +1,9 @@
 .App {
+  height: 90vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; }
+  grid-template-rows: 100%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  padding: 3vh; }
 
 /*# sourceMappingURL=App.module.css.map */

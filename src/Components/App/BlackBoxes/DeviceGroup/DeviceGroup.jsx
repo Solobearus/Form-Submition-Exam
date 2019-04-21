@@ -10,6 +10,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const StyledCheckboxUI = withStyles({
+    root: { color: 'white', },
+    checked: { color: 'white', },   
+    unchecked: { color: 'white', }
+})(CheckboxUI);
 
 class DeviceGroup extends React.Component {
 
@@ -17,9 +24,15 @@ class DeviceGroup extends React.Component {
         showList: false, // dropdown open/close
     }
     theme = createMuiTheme({
-        palette: {
-            type: "dark",
+        overrides: {
+            // Name of the component ⚛️ / style sheet
+            MuiIconButton: {
+                // Some CSS
+                backgroundColor: 'white',
+                color: 'white',
+            },
         },
+        typography: { useNextVariants: true },
     });
 
     render() {
@@ -34,23 +47,23 @@ class DeviceGroup extends React.Component {
 
         return (
             <div className={style.DeviceGroup} >
-                <FontAwesomeIcon className={style.FontAwesomeIcon} icon={icon} onClick={() => { this.setState({ showList: !this.state.showList }) }} />
+                <div className={style.DeviceGroupDiv}>
+                    <FontAwesomeIcon className={style.FontAwesomeIcon} icon={icon} onClick={() => { this.setState({ showList: !this.state.showList }) }} />
+                    {/* group 1 */}
+                    <FormControlLabel
+                        theme={this.theme}
+                        control={
 
-                {/* group 1 */}
-                <FormControlLabel
-                    theme={this.theme}
-                    control={
-
-                        < CheckboxUI
-                            checked={this.props.checkedCounter === this.props.devices.length}
-                            onChange={() => { this.props.changeGroupCheckBox(this.props.id) }}
-                            value={this.props.id}
-                            color="primary"
-                        />
-                    }
-                    label={this.props.name}
-                />
-
+                            < StyledCheckboxUI
+                                checked={this.props.checkedCounter === this.props.devices.length}
+                                onChange={() => { this.props.changeGroupCheckBox(this.props.id) }}
+                                value={this.props.id}
+                                color="primary"
+                            />
+                        }
+                    />
+                    {this.props.name}
+                </div>
                 {devicesList}
             </div >
         )
