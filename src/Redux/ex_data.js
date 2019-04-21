@@ -2,7 +2,7 @@ export default {
 	"device_groups": [{
 		"id": "1",
 		"name": "group 1",
-		"checked": 0,
+		// "checked": 0,
 		//"checked" : true, FIXME: our addition , will be in global state
 		"devices": [{
 			"id": 11,

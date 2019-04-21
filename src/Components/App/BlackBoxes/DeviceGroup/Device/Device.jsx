@@ -12,9 +12,9 @@ class Device extends React.Component {
                 <FormControlLabel
                     control={
                         <CheckboxUI
-                            checked={this.props.active}
-                            onChange={this.props.changeDeviceCheckBox({ groupId: this.props.groupId, id: this.props.id })}
-                            value={this.props.id}
+                            checked={this.props.active == 1 ? true : false}
+                            onChange={() => {this.props.changeDeviceCheckBox({ groupId: this.props.groupId, id: this.props.id })}}
+                            // value={this.props.id}
                             color="primary"
                         />
                     }

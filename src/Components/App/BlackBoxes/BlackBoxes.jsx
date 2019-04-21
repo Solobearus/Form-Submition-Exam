@@ -4,12 +4,12 @@ import DeviceGroup from './DeviceGroup/DeviceGroup.jsx'
 
 const BlackBoxes = (props) => {
     // console.log('[BlackBoxes] render');
-    // console.log('props', props);
+    console.log('props', props.device_groups);
 
     return (
         <div className={style.BlackBoxes}>
             {(props.device_groups || []).map(
-                (group) => <DeviceGroup {...group} />
+                (group) => <DeviceGroup {...group} key = {group.id}/>
             )}
         </div>
     )

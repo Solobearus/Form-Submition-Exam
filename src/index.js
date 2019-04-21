@@ -6,7 +6,10 @@ import './index.css';
 import App from './Components/App/App.jsx';
 import * as serviceWorker from './serviceWorker';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
+library.add(faAngleUp, faAngleDown);
 //Edit Material-ui Theme here :
 const theme = createMuiTheme({
     palette: {

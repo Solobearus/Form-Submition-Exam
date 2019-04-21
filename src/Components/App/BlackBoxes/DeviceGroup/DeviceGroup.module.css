@@ -1,3 +1,6 @@
-.DeviceGroup {
-    
-}
+.DeviceGroup .FontAwesomeIcon {
+  margin-right: 5px;
+  margin-left: 10px;
+  cursor: pointer; }
+
+/*# sourceMappingURL=DeviceGroup.module.css.map */

@@ -33,11 +33,13 @@ class App extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    device_groups: state.device_groups,
-    protocols: state.protocols,
-    times: state.times
-});
+const mapStateToProps = state => {
+    return {
+        device_groups: state.firstReducer.device_groups,
+        protocols: state.protocols,
+        times: state.times
+    }
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
