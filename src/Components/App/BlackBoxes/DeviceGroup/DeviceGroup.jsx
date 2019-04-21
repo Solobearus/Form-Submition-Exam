@@ -7,39 +7,43 @@ import Device from './Device/Device.jsx'
 import { connect } from 'react-redux'
 import { changeGroupCheckBox } from '../../../../Redux/actions'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+import Typography from '@material-ui/core/Typography';
 
 class DeviceGroup extends React.Component {
 
     state = {
         showList: false, // dropdown open/close
     }
+    theme = createMuiTheme({
+        palette: {
+            type: "dark",
+        },
+    });
 
-    
     render() {
         let devicesList = null;
         let icon = "angle-down";
         if (this.state.showList) {
             icon = "angle-up";
             devicesList = (this.props.devices || []).map(
-                (device) => <Device {...device} groupId={this.props.id} key={device.id}/>
+                (device) => <Device {...device} groupId={this.props.id} key={device.id} />
             )
         }
-                
-        console.log("this.props.checkedCounter", this.props.checkedCounter);
-        console.log("this.props.length", this.props.devices.length);
-                
 
         return (
             <div className={style.DeviceGroup} >
-                <FontAwesomeIcon className={style.FontAwesomeIcon} icon={icon} onClick={() => {this.setState({ showList: !this.state.showList })}}/>
+                <FontAwesomeIcon className={style.FontAwesomeIcon} icon={icon} onClick={() => { this.setState({ showList: !this.state.showList }) }} />
 
                 {/* group 1 */}
                 <FormControlLabel
+                    theme={this.theme}
                     control={
-                        
+
                         < CheckboxUI
                             checked={this.props.checkedCounter === this.props.devices.length}
-                            onChange={() => {this.props.changeGroupCheckBox(this.props.id)}}
+                            onChange={() => { this.props.changeGroupCheckBox(this.props.id) }}
                             value={this.props.id}
                             color="primary"
                         />

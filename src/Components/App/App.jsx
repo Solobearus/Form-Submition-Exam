@@ -19,15 +19,16 @@ class App extends React.Component {
 
     render() {
         // console.log('[App] > render');
+        console.log("this.props.protocols",this.props.protocols);
 
         return (
             <div className={style.App}>
-                <form onSubmit={this.handleSubmit}>
+                {/* <form onSubmit={this.handleSubmit}> */}
                     <BlackBoxes device_groups={this.props.device_groups} />
-                    {/* <Protocols protocos={this.props.protocols}></Protocols> */}
-                    {/* <Times times={this.props.times}></Times> */}
-                    {/* <Summery></Summery> */}
-                </form>
+                    <Protocols protocols={this.props.protocols}></Protocols>
+                    <Times times={this.props.times}></Times>
+                    <Summery></Summery>
+                {/* </form> */}
             </div>
         )
     }
@@ -36,8 +37,8 @@ class App extends React.Component {
 const mapStateToProps = state => {
     return {
         device_groups: state.firstReducer.device_groups,
-        protocols: state.protocols,
-        times: state.times
+        protocols: state.firstReducer.protocols,
+        times: state.firstReducer.times
     }
 };
 

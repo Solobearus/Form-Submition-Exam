@@ -12,11 +12,11 @@ import { faAngleUp, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 library.add(faAngleUp, faAngleDown);
 //Edit Material-ui Theme here :
 const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: '#613C24',
-        },
-    },
+    // palette: {
+    //     primary: {
+    //         main: '#613C24',
+    //     },
+    // },
     typography: {
         useNextVariants: true,
     },

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,OAAQ;EACJ,KAAK,EAAE,KAAK",
+"sources": ["Device.module.scss"],
 "names": [],
 "file": "Device.module.css"
 }

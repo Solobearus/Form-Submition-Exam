@@ -2,18 +2,14 @@ export default {
 	"device_groups": [{
 		"id": "1",
 		"name": "group 1",
-		// "checked": 0,
-		//"checked" : true, FIXME: our addition , will be in global state
 		"devices": [{
 			"id": 11,
 			"name": "device 11",
 			"active": 1
-			//"checked" : true, FIXME: our addition , will be in global state
 		}, {
 			"id": 12,
 			"name": "device 12",
 			"active": 0
-			//"checked" : true, FIXME: our addition , will be in global state
 		}, {
 			"id": 13,
 			"name": "device 13",

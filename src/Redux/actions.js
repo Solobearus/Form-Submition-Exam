@@ -3,13 +3,14 @@
  * action types
  */
 
+export const GET_INITIALIZESTATE = 'GET_INITIALIZESTATE';
 export const GET_DEVICE_GROUPS = 'GET_DEVICE_GROUPS';
 export const CHANGE_GROUP_CHECKBOX = 'CHANGE_GROUP_CHECKBOX';
 export const CHANGE_DEVICE_CHECKBOX = 'CHANGE_DEVICE_CHECKBOX';
-export const GET_DEVICES = 'GET_DEVICES';
-export const GET_PROTOCOLS = 'GET_PROTOCOLS';
-export const GET_TIMES = 'GET_TIMES';
-export const GET_INITIALIZESTATE = 'GET_INITIALIZESTATE';
+export const CHANGE_PROTOCOL_CHECKBOX = 'CHANGE_PROTOCOL_CHECKBOX';
+export const CHANGE_TIMES_CHECKBOX = 'CHANGE_TIMES_CHECKBOX';
+export const RESET_STATE = 'RESET_STATE';
+export const SUBMIT_FORM = 'SUBMIT_FORM';
 
 /*
  * action creators
@@ -26,27 +27,18 @@ export function changeDeviceCheckBox(payload) {
     return { type: CHANGE_DEVICE_CHECKBOX, payload }
 };
 
-
-
-
-
-
-
-
-
-
-export function getDevice_groups(payload) {
-    return { type: GET_DEVICE_GROUPS, payload }
+export function changeProtocolCheckBox(payload) {
+    return { type: CHANGE_PROTOCOL_CHECKBOX, payload }
 };
 
-export function getDevices(payload) {
-    return { type: GET_DEVICES, payload }
+export function changeTimesCheckBox(payload) {
+    return { type: CHANGE_TIMES_CHECKBOX, payload }
 };
 
-export function getProtocols(payload) {
-    return { type: GET_PROTOCOLS, payload }
+export function resetState(payload) {
+    return { type: RESET_STATE, payload }
 };
 
-export function getTimes(payload) {
-    return { type: GET_TIMES, payload }
+export function submitForm(payload) {
+    return { type: SUBMIT_FORM, payload }
 };

@@ -7,6 +7,7 @@ const initialState = {
     device_groups: null,
     protocols: null,
     times: null,
+    timesActive: "Last 30 minutes",
 };
 
 function firstReducer(state = initialState, action) {
@@ -15,7 +16,6 @@ function firstReducer(state = initialState, action) {
     let checked = null;
     let indexOfdevice_group = null;
     let newState = null;
-    // console.log('initialState: ', initialState);
 
     switch (action.type) {
         case actions.GET_INITIALIZESTATE: // will be called after UI mounted
@@ -32,12 +32,14 @@ function firstReducer(state = initialState, action) {
                     if (newState.device_groups[i].devices[j].active === 1) {
                         // We count the checked devices for that device group
                         newState.device_groups[i].checkedCounter++;
-                        console.log("checkedCounter" ,newState.device_groups[i].checkedCounter);
+                        // console.log("checkedCounter", newState.device_groups[i].checkedCounter);
                     }
                 }
             }
-            
-            // newState = update( state, {$set: newState} );
+
+            for (let i = 0; i < newState.protocols.length; i++) {
+                newState.protocols[i].active = false;
+            }
 
             return { ...state, ...newState };
 
@@ -62,7 +64,7 @@ function firstReducer(state = initialState, action) {
                 device.active = active;
             });
 
-            return { ...state, device_groups : [...newChange]};
+            return { ...state, device_groups: [...newChange] };
 
         case actions.CHANGE_DEVICE_CHECKBOX:
             // change is made to device_groups
@@ -71,45 +73,61 @@ function firstReducer(state = initialState, action) {
             indexOfdevice_group = newChange.map(device_group => device_group.id).indexOf(action.payload.groupId);
 
             let devicesPerGroup = newChange[indexOfdevice_group].devices;
-            
+
             // indexOfId is the index that represents the id that we look for
             let indexOfId = devicesPerGroup.map(device => device.id).indexOf(action.payload.id);
-            console.log("indexOfId", indexOfId);
-            
-            checked = devicesPerGroup[indexOfId].active == 1;
-            console.log("checked", checked);
 
+            checked = devicesPerGroup[indexOfId].active == 1;
             if (checked) {
                 newChange[indexOfdevice_group].checkedCounter--;
             } else {
                 newChange[indexOfdevice_group].checkedCounter++;
             }
-        
+
             // toggle device checkbox and update checkedCounter of group to handle groups checkbox.
             newChange[indexOfdevice_group].devices[indexOfId].active = !devicesPerGroup[indexOfId].active;
 
-            return { ...state , device_groups : [...newChange] };
+            return { ...state, device_groups: [...newChange] };
 
+        case actions.CHANGE_PROTOCOL_CHECKBOX:
+            // change is made to protocols
+            newChange = [...state.protocols];
 
-        case actions.GET_DEVICE_GROUPS:
-            newChange = state.change;
-            console.log(`Reducer: some change was made to state.change`);
-            return { ...state, change: newChange };
+            let indexOfprotocol = newChange.map(protocol => protocol.id).indexOf(action.payload);
 
-        case actions.GET_DEVICES:
-            newChange = state.change;
-            console.log(`Reducer: some change was made to state.change`);
-            return { ...state, change: newChange };
+            newChange[indexOfprotocol].active = !newChange[indexOfprotocol].active;
 
-        case actions.GET_PROTOCOLS:
-            newChange = state.change;
-            console.log(`Reducer: some change was made to state.change`);
-            return { ...state, change: newChange };
+            return { ...state, protocols: [...newChange] };
 
-        case actions.GET_TIMES:
-            newChange = state.change;
-            console.log(`Reducer: some change was made to state.change`);
-            return { ...state, change: newChange };
+        case actions.CHANGE_TIMES_CHECKBOX:
+            // change is made to times
+            newChange = action.payload;
+
+            console.log("actions.payload", action.payload);
+            return { ...state, timesActive: newChange };
+
+        case actions.RESET_STATE:
+            let newStateDevice_groups = [...state.device_groups];
+            let newStateProtocols = [...state.protocols];
+
+            for (let i = 0; i < newStateDevice_groups.length; i++) {
+                // reset all device_groups to 0
+                newStateDevice_groups[i].checkedCounter = 0;
+
+                for (let j = 0; j < newStateDevice_groups[i].devices.length; j++) {
+                    // reset all devices to 0
+                    newStateDevice_groups[i].devices[j].active = 0
+                }
+            }
+
+            for (let i = 0; i < newStateProtocols.length; i++) {
+                // reset all protocols to 0
+                newStateProtocols[i].active = false;
+            }
+
+            let newTimesActive = "Last 30 minutes";
+
+            return { ...state, device_groups : newStateDevice_groups, protocols : newStateProtocols, timesActive : newTimesActive , };
 
         default:
             return state

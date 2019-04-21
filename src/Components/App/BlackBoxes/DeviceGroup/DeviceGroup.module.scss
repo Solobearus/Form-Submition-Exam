@@ -1,8 +1,13 @@
 .DeviceGroup {
     .FontAwesomeIcon{
-        margin-right : 5px;
+        margin-right : 15px;
         margin-left : 10px;
         cursor: pointer;
     }
-    
+    .FormControlLabel{
+    color: white !important;
+
+    }
+    background-color: navy; 
+    color: white;
 }

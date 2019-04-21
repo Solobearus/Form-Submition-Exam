@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AACI,6BAAgB;EACZ,YAAY,EAAG,GAAG;EAClB,WAAW,EAAG,IAAI;EAClB,MAAM,EAAE,OAAO",
+"mappings": "AAAA,YAAa;EAUT,gBAAgB,EAAE,IAAI;EACtB,KAAK,EAAE,KAAK;EAVZ,6BAAgB;IACZ,YAAY,EAAG,IAAI;IACnB,WAAW,EAAG,IAAI;IAClB,MAAM,EAAE,OAAO;EAEnB,8BAAiB;IACjB,KAAK,EAAE,gBAAgB",
 "sources": ["DeviceGroup.module.scss"],
 "names": [],
 "file": "DeviceGroup.module.css"

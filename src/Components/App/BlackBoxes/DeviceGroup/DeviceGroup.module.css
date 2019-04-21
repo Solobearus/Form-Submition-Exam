@@ -1,6 +1,11 @@
-.DeviceGroup .FontAwesomeIcon {
-  margin-right: 5px;
-  margin-left: 10px;
-  cursor: pointer; }
+.DeviceGroup {
+  background-color: navy;
+  color: white; }
+  .DeviceGroup .FontAwesomeIcon {
+    margin-right: 15px;
+    margin-left: 10px;
+    cursor: pointer; }
+  .DeviceGroup .FormControlLabel {
+    color: white !important; }
 
 /*# sourceMappingURL=DeviceGroup.module.css.map */
