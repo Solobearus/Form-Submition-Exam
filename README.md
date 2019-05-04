@@ -1,6 +1,20 @@
-## Home exam
+# Home exam for a compony
 
-### Technologies envolved :
+## This project demonstrates :
+
+- Checkboxes that affect sub-checkboxes and vice-versa.
+Imagine form that contains checkboxes that affects other checkboxes. 
+Than when any change to the sub checkboxes is made we have to update the super checkboxes.
+
+- More checkboxes !
+
+- Also radio buttons !
+
+- Submit preview.
+Before we submit, We have a component that shows all the checked inputs, so we know exactly what we submit
+
+
+## Technologies envolved :
 
 - Create-react-app
 - npm i redux
